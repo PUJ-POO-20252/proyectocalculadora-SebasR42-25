@@ -9,10 +9,14 @@ int main() {
 
     int resultado_suma = sumar(x, y);
     int resultado_resta = restar(x, y);
+    int resultado_multiplicacion = multiplicar(x, y);
+    int resultado_dividir = dividir(x, y);
 
 
     cout << "Suma: " << resultado_suma << endl;
     cout << "Resta: " << resultado_resta << endl;
+    cout << "Multiplicacion: " << resultado_multiplicacion << endl;
+    cout << "Division: " << resultado_dividir << endl;
 
 
     return 0;

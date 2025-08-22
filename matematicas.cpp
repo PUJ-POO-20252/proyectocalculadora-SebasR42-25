@@ -1,8 +1,6 @@
-// matematicas.cpp - Created by Sebas on 8/17/2025.
+#include <iostream>
+using namespace std;
 
-#include "matematicas.h"
-
-// --- Definiciones ---
 int sumar(int a, int b) {
     return a + b;
 }
@@ -16,6 +14,9 @@ int multiplicar(int a, int b) {
 }
 
 int dividir(int a, int b) {
+    if (b == 0) {
+        cerr << "Error: intento de division por cero con a = " << a << endl;
+        return 0;
+    }
     return a / b;
 }
-

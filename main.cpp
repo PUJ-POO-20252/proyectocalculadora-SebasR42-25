@@ -17,30 +17,52 @@ int main() {
     int resultado_suma = sumar(x, y);
     int resultado_resta = restar(x, y);
     int resultado_multiplicacion = multiplicar(x, y);
-    int resultado_dividir = dividir(x, y);
+
+    // Evitar division por cero
+    if (y == 0) {
+        cout << "Division: Error (division por cero)" << endl;
+    } else {
+        int resultado_dividir = dividir(x, y);
+        cout << "Division: " << resultado_dividir << endl;
+    }
 
     cout << "Suma: " << resultado_suma << endl;
     cout << "Resta: " << resultado_resta << endl;
     cout << "Multiplicacion: " << resultado_multiplicacion << endl;
-    cout << "Division: " << resultado_dividir << endl;
 
     // PARTE 2: Operaciones con Matrices
-    int A[2][3] = {
-        {10, 20, 30},
-        {40, 50, 60}
-    };
+    const int FILAS = 2;
+    const int COLS = 3;
 
-    int B[2][3] = {
-        {1, 2, 3},
-        {4, 5, 6}
-    };
-
-    int C[2][3]; // Resultado de las Sumas de Matrices A y B
+    int A[FILAS][COLS];
+    int B[FILAS][COLS];
+    int C[FILAS][COLS]; // Resultado de las Sumas de Matrices A y B
 
     cout << "\n=== Operaciones con Matrices ===\n";
+
+    // Entrada de Matriz A
+    cout << "Ingrese los valores para Matriz A (" << FILAS << "x" << COLS << "):\n";
+    for (int i = 0; i < FILAS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            cout << "A[" << i << "][" << j << "]: ";
+            cin >> A[i][j];
+        }
+    }
+
+    // Entrada de Matriz B
+    cout << "Ingrese los valores para Matriz B (" << FILAS << "x" << COLS << "):\n";
+    for (int i = 0; i < FILAS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            cout << "B[" << i << "][" << j << "]: ";
+            cin >> B[i][j];
+        }
+    }
+
+    // Mostrar matrices ingresadas
     imprimirMatriz("Matriz A:", A);
     imprimirMatriz("Matriz B:", B);
 
+    // Operación de suma
     sumarMatrices(A, B, C);
     imprimirMatriz("Matriz A + B:", C);
 

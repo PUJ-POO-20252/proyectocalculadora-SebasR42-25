@@ -1,5 +1,6 @@
 #include "matriz_utils.h"
 #include <iostream>
+using namespace std;
 
 void sumarMatrices(const int (&Ma)[2][3], const int (&Mb)[2][3], int (&resultado)[2][3]) {
     for (int i = 0; i < 2; ++i) {
@@ -9,13 +10,13 @@ void sumarMatrices(const int (&Ma)[2][3], const int (&Mb)[2][3], int (&resultado
     }
 }
 
-void imprimirMatriz(const std::string& titulo, const int (&mat)[2][3]) {
-    std::cout << titulo << '\n';
+void imprimirMatriz(const string& titulo, const int (&mat)[2][3]) {
+    cout << titulo << '\n';
     for (int i = 0; i < 2; ++i) {
         for (int j = 0; j < 3; ++j) {
-            std::cout << mat[i][j] << "\t";
+            cout << mat[i][j] << "\t";
         }
-        std::cout << '\n';
+        cout << '\n';
     }
-    std::cout << std::endl;
+    cout << endl;
 }

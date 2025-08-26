@@ -1,11 +1,15 @@
 // main.cpp
 #include <iostream>
-#include "matematicas.h"   // Mis Funciones Básicas: Sumar, Restar, Multiplicar y Dividir.
-#include "matriz_utils.h"  // Funciones Nuevas con Matrices.
+#include "matematicas.h"   // Funciones básicas
+#include "matriz_utils.h"  // Funciones con matrices fijas 2x3
+#include "Transponer.h"    // Funciones para transponer matrices
+
 using namespace std;
 
 int main() {
-    // PARTE 1: Calculadora Básica
+    // ---------------------------
+    // PARTE 1: Calculadora básica
+    // ---------------------------
     int x, y;
 
     cout << "Ingrese el primer numero: ";
@@ -18,7 +22,6 @@ int main() {
     int resultado_resta = restar(x, y);
     int resultado_multiplicacion = multiplicar(x, y);
 
-    // Evitar division por cero
     if (y == 0) {
         cout << "Division: Error (division por cero)" << endl;
     } else {
@@ -30,18 +33,16 @@ int main() {
     cout << "Resta: " << resultado_resta << endl;
     cout << "Multiplicacion: " << resultado_multiplicacion << endl;
 
-    // PARTE 2: Operaciones con Matrices
-    const int FILAS = 2;
-    const int COLS = 3;
-
+    // ---------------------------
+    // PARTE 2: Suma de matrices 2x3
+    // ---------------------------
+    const int FILAS = 2, COLS = 3;
     int A[FILAS][COLS];
     int B[FILAS][COLS];
-    int C[FILAS][COLS]; // Resultado de las Sumas de Matrices A y B
+    int C[FILAS][COLS];
 
-    cout << "\n=== Operaciones con Matrices ===\n";
-
-    // Entrada de Matriz A
-    cout << "Ingrese los valores para Matriz A (" << FILAS << "x" << COLS << "):\n";
+    cout << "\n=== Operaciones con Matrices (2x3) ===\n";
+    cout << "Ingrese los valores para Matriz A:\n";
     for (int i = 0; i < FILAS; i++) {
         for (int j = 0; j < COLS; j++) {
             cout << "A[" << i << "][" << j << "]: ";
@@ -49,8 +50,7 @@ int main() {
         }
     }
 
-    // Entrada de Matriz B
-    cout << "Ingrese los valores para Matriz B (" << FILAS << "x" << COLS << "):\n";
+    cout << "Ingrese los valores para Matriz B:\n";
     for (int i = 0; i < FILAS; i++) {
         for (int j = 0; j < COLS; j++) {
             cout << "B[" << i << "][" << j << "]: ";
@@ -58,13 +58,37 @@ int main() {
         }
     }
 
-    // Mostrar matrices ingresadas
     imprimirMatriz("Matriz A:", A);
     imprimirMatriz("Matriz B:", B);
 
-    // Operación de suma
     sumarMatrices(A, B, C);
     imprimirMatriz("Matriz A + B:", C);
+
+    // ---------------------------
+    // PARTE 3: Transponer matriz
+    // ---------------------------
+    int rows, cols;
+    int M[MAX][MAX], MT[MAX][MAX];
+
+    cout << "\n=== Transposicion de Matriz ===\n";
+    cout << "Ingrese numero de filas (max " << MAX << "): ";
+    cin >> rows;
+    cout << "Ingrese numero de columnas (max " << MAX << "): ";
+    cin >> cols;
+
+    if (rows > MAX || cols > MAX || rows < 1 || cols < 1) {
+        cout << "Tamaño inválido!" << endl;
+        return 1;
+    }
+
+    ingresarMatriz(M, rows, cols);
+    transponerMatriz(M, MT, rows, cols);
+
+    cout << "\nMatriz Original:\n";
+    imprimirMatriz(M, rows, cols);
+
+    cout << "\nMatriz Transpuesta:\n";
+    imprimirMatriz(MT, cols, rows);
 
     return 0;
 }

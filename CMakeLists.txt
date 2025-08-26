@@ -8,4 +8,6 @@ add_executable(Proyecto_1 main.cpp
         matematicas.h
         matriz_utils.cpp
         matriz_utils.h
+        Transponer.cpp
+        Transponer.h
 )
